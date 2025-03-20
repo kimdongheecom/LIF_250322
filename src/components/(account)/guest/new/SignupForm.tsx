@@ -1,6 +1,6 @@
-
+// app/signup/components/SignupForm.tsx
 import React from "react";
-import { useSignupForm } from "./useSignupForm";
+import { useSignupForm } from "@/hooks/(account)/guest/new/useSignupForm";
 
 const SignupForm: React.FC = () => {
   const { form, error, handleChange, handleSubmit } = useSignupForm();
