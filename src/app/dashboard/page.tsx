@@ -1,6 +1,7 @@
 import Link from "next/link";
+import LogoutButton from "./LogoutButton";
 
-export default function Home() {
+export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="absolute top-4 right-4 flex gap-3">
@@ -13,8 +14,14 @@ export default function Home() {
       </div>
       
       <div className="flex flex-col items-center justify-center min-h-screen">
-        <div className="text-4xl font-bold text-blue-500 mb-6">Hello World</div>
+        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
+          <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">사용자 대시보드</h2>
+          
+          <div className="mt-8 text-center">
+            <LogoutButton />
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+} 
