@@ -1,9 +1,18 @@
-// app/signup/hooks/useSignupForm.ts
-import { useState } from "react";
-import axios from "axios";
+"use client"
 
-export function useSignupForm() {
-  const [form, setForm] = useState({
+import { useState } from "react";
+import api from "@/lib/axios";
+
+interface SignupForm {
+  user_id: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  name: string;
+}
+
+export default function useSignupForm() {
+  const [form, setForm] = useState<SignupForm>({
     user_id: "",
     email: "",
     password: "",
@@ -11,14 +20,15 @@ export function useSignupForm() {
     name: "",
   });
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm((prevForm) => ({ ...prevForm, [e.target.name]: e.target.value }));
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (form.password !== form.confirmPassword) {
       setError("Passwords do not match");
       return;
@@ -29,8 +39,10 @@ export function useSignupForm() {
     }
     setError("");
 
+    console.log("Form submitted", form);
+
     try {
-      const response = await axios.post("http://localhost:8000/api/customer/create", {
+      const response = await api.post("/auth/user/signup", {
         user_id: form.user_id,
         email: form.email,
         password: form.password,

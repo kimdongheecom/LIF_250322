@@ -8,7 +8,7 @@ export default function DashboardPage() {
         <Link href="/" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
           홈
         </Link>
-        <Link href="/login" className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors">
+        <Link href="/auth/user/login" className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors">
           로그인
         </Link>
       </div>
