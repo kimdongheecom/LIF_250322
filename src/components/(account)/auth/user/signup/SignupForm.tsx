@@ -1,3 +1,5 @@
+"use client";
+
 import useSignupForm from "@/hooks/(account)/auth/user/signup/useSignupForm";
 
 interface InputFieldProps {
