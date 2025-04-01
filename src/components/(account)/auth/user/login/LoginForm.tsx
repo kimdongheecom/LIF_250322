@@ -9,7 +9,7 @@ interface InputFieldProps {
     placeholder: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  }
+}
   
 function InputField({ type, name, placeholder, value, onChange }: InputFieldProps) {
     return (
@@ -19,31 +19,42 @@ function InputField({ type, name, placeholder, value, onChange }: InputFieldProp
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="w-full p-3 border border-blue-300 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full p-3 border border-blue-300 rounded-md mb-3 
+                 focus:outline-none focus:ring-2 focus:ring-blue-500
+                 text-gray-900 
+                 placeholder:text-gray-500"
         required
       />
     );
-  }
-  
+}
 
 export default function LoginForm() {
   const { form, error, handleChange, handleSubmit } = useLoginForm();
-  //const router = useRouter();
+  const router = useRouter();
 
   const onSubmit = async (e: React.FormEvent) => {
     const isSuccess = await handleSubmit(e);
-    // if (isSuccess) {
-    //   router.push("/auth/user/list"); // 로그인 성공 시 이동
-    // }
-    console.log("로그인 성공:", isSuccess);
-    alert("🧨🧨🎇🎇🎆🧨`로그인 성공");
-    // router.push("/auth/user/list");
+    if (isSuccess) {
+      router.push('/dashboard');
+    }
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <InputField type="email" name="email" placeholder="이메일" value={form.email} onChange={handleChange} />
-      <InputField type="password" name="password" placeholder="비밀번호" value={form.password} onChange={handleChange} />
+      <InputField 
+        type="email" 
+        name="email" 
+        placeholder="이메일" 
+        value={form.email} 
+        onChange={handleChange} 
+      />
+      <InputField 
+        type="password" 
+        name="password" 
+        placeholder="비밀번호" 
+        value={form.password} 
+        onChange={handleChange} 
+      />
 
       {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 

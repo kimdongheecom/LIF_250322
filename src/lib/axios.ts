@@ -1,5 +1,6 @@
 // src/lib/axios.ts
 import axios from 'axios'
+import { getAccessToken } from './authToken'
 
 
 const api = axios.create({
@@ -7,11 +8,11 @@ const api = axios.create({
 })
 
 api.interceptors.request.use((config) => {
-  // const token = useAuthStore.getState().accessToken
-  // if (token) {
-  //   config.headers.Authorization = `Bearer ${token}`
-  // }
-  config.headers.Authorization = `Bearer blah blah blah`
+  const accessToken = getAccessToken()
+  if (accessToken) {
+    console.log("🔏🔐🔒🔓accessToken", accessToken)
+    config.headers.Authorization = `Bearer ${accessToken}`
+  }
   return config
 })
 
