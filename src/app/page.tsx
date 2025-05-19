@@ -13,7 +13,7 @@ export default function Home() {
       </div>
       
       <div className="flex flex-col items-center justify-center min-h-screen">
-        <div className="text-4xl font-bold text-blue-500 mb-6">Hello World 2</div>
+        <div className="text-4xl font-bold text-blue-500 mb-6">sustainable development</div>
       </div>
     </div>
   );
